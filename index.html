@@ -69,25 +69,26 @@
     background:var(--header-bg);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line-soft);
-    transition:background-color .25s ease, border-color .25s ease;
+    transition:background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
-  .nav-row{display:flex;align-items:center;justify-content:space-between;height:72px;}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;}
-  .brand .dot{color:var(--blue);}
-  .nav-links{display:none;gap:36px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;}
-  .nav-links a{position:relative;color:var(--muted);padding:6px 0;transition:color .2s ease;}
-  .nav-links a:hover, .nav-links a.active{color:var(--fg);}
-  .nav-links a::after{
-    content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
-    background:var(--blue);transition:width .25s ease;
+  header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,0.18);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;}
+  .brand .bracket{color:var(--blue);font-family:'IBM Plex Mono',monospace;font-weight:400;}
+  .nav-links{display:none;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;}
+  .nav-links a{
+    position:relative;color:var(--muted);padding:8px 16px;border-radius:20px;
+    transition:color .2s ease, background-color .2s ease;
   }
-  .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+  .nav-links a:hover{color:var(--fg);background:var(--panel-2);}
+  .nav-links a.active{color:var(--blue);background:var(--panel-2);}
   @media(min-width:840px){ .nav-links{display:flex;} .menu-btn{display:none;} }
 
   .menu-btn{background:none;border:1px solid var(--line);color:var(--fg);width:40px;height:40px;border-radius:4px;font-size:1rem;}
   .mobile-menu{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line-soft);}
-  .mobile-menu a{padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--muted);border-bottom:1px solid var(--line-soft);}
+  .mobile-menu a{padding:14px 4px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--muted);border-bottom:1px solid var(--line-soft);transition:color .2s ease;}
   .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-menu a.active,.mobile-menu a:hover{color:var(--blue);}
   .hidden{display:none;}
 
   /* ---------- generic section chrome ---------- */
@@ -129,10 +130,14 @@
   .hero-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;}
   @media(min-width:900px){ .hero-grid{grid-template-columns:1.15fr 0.85fr;} }
 
-  .hero-kicker{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.85rem;margin-bottom:16px;}
-  .hero-title{font-size:clamp(2.4rem,5.6vw,3.9rem);line-height:1.06;font-weight:700;}
+  .hero-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.82rem;margin-bottom:22px;
+  }
+  .hero-kicker::before{content:'';width:22px;height:1px;background:var(--amber);}
+  .hero-title{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.05;font-weight:700;letter-spacing:-0.02em;}
   .hero-title .accent{color:var(--blue);}
-  .hero-sub{margin-top:20px;color:var(--muted);max-width:46ch;font-size:1.05rem;}
+  .hero-sub{margin-top:22px;color:var(--muted);max-width:46ch;font-size:1.08rem;}
 
   .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
   .btn{
@@ -288,7 +293,7 @@
 <header>
   <div class="wrap">
     <div class="nav-row">
-      <a href="#home" class="brand">Pratibha Saini<span class="dot">.</span></a>
+      <a href="#home" class="brand"><span class="bracket">[</span>Pratibha Saini<span class="bracket">]</span></a>
       <nav class="nav-links">
         <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
@@ -524,7 +529,7 @@
 <footer>
   <div class="wrap footer-row">
     <div>
-      <a href="#home" class="brand">Pratibha Saini<span class="dot">.</span></a>
+      <a href="#home" class="brand"><span class="bracket">[</span>Pratibha Saini<span class="bracket">]</span></a>
       <p class="muted">© 2026 Pratibha Saini. All rights reserved.</p>
     </div>
     <div class="social-row">
@@ -569,15 +574,16 @@
       if(target){
         window.scrollTo({top: target.offsetTop - 90, behavior:'smooth'});
         mobileMenu.classList.add('hidden');
-        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-        document.querySelectorAll(`.nav-links a[href="${a.getAttribute('href')}"]`).forEach(l => l.classList.add('active'));
+        document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(l => l.classList.remove('active'));
+        document.querySelectorAll(`.nav-links a[href="${a.getAttribute('href')}"], .mobile-menu a[href="${a.getAttribute('href')}"]`).forEach(l => l.classList.add('active'));
       }
     });
   });
 
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
   const topBtn = document.getElementById('top-btn');
+  const headerEl = document.querySelector('header');
 
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
@@ -585,10 +591,11 @@
       const top = sec.offsetTop - 110;
       if(y >= top && y < top + sec.offsetHeight){
         navLinks.forEach(l => l.classList.remove('active'));
-        document.querySelectorAll(`.nav-links a[href="#${sec.id}"]`).forEach(l => l.classList.add('active'));
+        document.querySelectorAll(`.nav-links a[href="#${sec.id}"], .mobile-menu a[href="#${sec.id}"]`).forEach(l => l.classList.add('active'));
       }
     });
     topBtn.classList.toggle('hidden', y < 400);
+    headerEl.classList.toggle('scrolled', y > 10);
   });
 
   topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
