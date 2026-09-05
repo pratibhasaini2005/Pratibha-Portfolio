@@ -19,6 +19,9 @@
     --muted:#7d97b3;
     --blue:#6db8ff;
     --amber:#e6a13d;
+    --header-bg:rgba(5,13,23,0.86);
+    --chip-bg:rgba(5,13,23,0.85);
+    --btn-fg:#08202f;
   }
 
   [data-theme="light"]{
@@ -31,6 +34,9 @@
     --muted:#54637a;
     --blue:#2172c9;
     --amber:#b3711f;
+    --header-bg:rgba(244,246,248,0.88);
+    --chip-bg:rgba(255,255,255,0.9);
+    --btn-fg:#ffffff;
   }
 
   *{box-sizing:border-box;}
@@ -60,9 +66,10 @@
   /* ---------- nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(10,30,51,0.86);
+    background:var(--header-bg);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line-soft);
+    transition:background-color .25s ease, border-color .25s ease;
   }
   .nav-row{display:flex;align-items:center;justify-content:space-between;height:72px;}
   .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;}
@@ -132,8 +139,8 @@
     padding:13px 26px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.9rem;
     display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;border:1px solid transparent;
   }
-  .btn-solid{background:var(--blue);color:#08202f;font-weight:500;}
-  .btn-solid:hover{background:#8ecaff;}
+  .btn-solid{background:var(--blue);color:var(--btn-fg);font-weight:500;}
+  .btn-solid:hover{filter:brightness(1.1);}
   .btn-outline{border-color:var(--line);color:var(--fg);}
   .btn-outline:hover{border-color:var(--blue);color:var(--blue);}
 
@@ -216,7 +223,7 @@
   .proj-media{height:190px;overflow:hidden;border-bottom:1px solid var(--line);position:relative;}
   .proj-media img{width:100%;height:100%;object-fit:cover;}
   .proj-index{
-    position:absolute;top:10px;left:10px;background:rgba(10,30,51,.85);
+    position:absolute;top:10px;left:10px;background:var(--chip-bg);
     border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;
     padding:3px 8px;color:var(--amber);
   }
@@ -257,8 +264,9 @@
 
   #top-btn{
     position:fixed;bottom:28px;right:28px;width:44px;height:44px;
-    background:var(--blue);color:#08202f;border:none;border-radius:2px;
+    background:var(--blue);color:var(--btn-fg);border:none;border-radius:2px;
     display:flex;align-items:center;justify-content:center;z-index:40;
+    transition:background-color .25s ease;
   }
 
   :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
