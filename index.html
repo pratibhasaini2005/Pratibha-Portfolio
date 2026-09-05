@@ -1,754 +1,589 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratibha Saini | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0ea5e9',
-                        secondary: '#7e22ce',
-                        dark: '#0f172a',
-                        darker: '#020617',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active::after {
-            width: 100%;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            left: -7.5px;
-            top: 0;
-            background: linear-gradient(135deg, #0ea5e9, #7e22ce);
-        }
-        
-        .skill-bar {
-            height: 8px;
-            border-radius: 4px;
-            background-color: #1e293b;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
-            transition: width 1s ease-in-out;
-        }
-        
-        .project-card {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            box-shadow: 5px 5px 15px rgba(2, 6, 23, 0.5), 
-                        -5px -5px 15px rgba(30, 41, 59, 0.5);
-        }
-        
-        .contact-input {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-input:focus {
-            border-color: #0ea5e9;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratibha Saini — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --ink:#050d17;
+    --panel:#0a1a2c;
+    --panel-2:#0b1e33;
+    --line:#1f3d5a;
+    --line-soft:#122740;
+    --fg:#e8f0f8;
+    --muted:#7d97b3;
+    --blue:#6db8ff;
+    --amber:#e6a13d;
+  }
+
+  [data-theme="light"]{
+    --ink:#f4f6f8;
+    --panel:#ffffff;
+    --panel-2:#eef2f6;
+    --line:#c9d4de;
+    --line-soft:#dde5ec;
+    --fg:#101826;
+    --muted:#54637a;
+    --blue:#2172c9;
+    --amber:#b3711f;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{margin:0;padding:0;}
+
+  body{
+    background-color:var(--ink);
+    color:var(--fg);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    transition:background-color .25s ease, color .25s ease;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(10,30,51,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;}
+  .brand .dot{color:var(--blue);}
+  .nav-links{display:none;gap:36px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;}
+  .nav-links a{position:relative;color:var(--muted);padding:6px 0;transition:color .2s ease;}
+  .nav-links a:hover, .nav-links a.active{color:var(--fg);}
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--blue);transition:width .25s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+  @media(min-width:840px){ .nav-links{display:flex;} .menu-btn{display:none;} }
+
+  .menu-btn{background:none;border:1px solid var(--line);color:var(--fg);width:40px;height:40px;border-radius:4px;font-size:1rem;}
+  .mobile-menu{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line-soft);}
+  .mobile-menu a{padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--muted);border-bottom:1px solid var(--line-soft);}
+  .mobile-menu a:last-child{border-bottom:none;}
+  .hidden{display:none;}
+
+  /* ---------- generic section chrome ---------- */
+  section{padding:96px 0;position:relative;}
+  .section-tag{
+    font-family:'IBM Plex Mono',monospace;color:var(--blue);font-size:0.8rem;
+    display:flex;align-items:center;gap:10px;margin-bottom:18px;
+  }
+  .section-tag .rule{flex:1;height:1px;background:var(--line);}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.9rem,3.2vw,2.6rem);}
+
+  .corner{position:relative;}
+  .corner::before,.corner::after{
+    content:'';position:absolute;width:14px;height:14px;border:1px solid var(--blue);opacity:.65;
+  }
+  .corner::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .corner::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:2px;
+    transition:background-color .25s ease, border-color .25s ease;
+  }
+
+  .theme-toggle{
+    width:40px;height:40px;border:1px solid var(--line);border-radius:4px;
+    background:none;color:var(--fg);display:flex;align-items:center;justify-content:center;
+    margin-left:16px;transition:border-color .2s ease,color .2s ease;
+  }
+  .theme-toggle:hover{border-color:var(--blue);color:var(--blue);}
+  .theme-toggle .fa-sun{display:none;}
+  [data-theme="light"] .theme-toggle .fa-sun{display:inline-block;}
+  [data-theme="light"] .theme-toggle .fa-moon{display:none;}
+
+  /* ---------- hero ---------- */
+  #home{padding-top:150px;padding-bottom:110px;min-height:auto;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;}
+  @media(min-width:900px){ .hero-grid{grid-template-columns:1.15fr 0.85fr;} }
+
+  .hero-kicker{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.85rem;margin-bottom:16px;}
+  .hero-title{font-size:clamp(2.4rem,5.6vw,3.9rem);line-height:1.06;font-weight:700;}
+  .hero-title .accent{color:var(--blue);}
+  .hero-sub{margin-top:20px;color:var(--muted);max-width:46ch;font-size:1.05rem;}
+
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn{
+    padding:13px 26px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.9rem;
+    display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;border:1px solid transparent;
+  }
+  .btn-solid{background:var(--blue);color:#08202f;font-weight:500;}
+  .btn-solid:hover{background:#8ecaff;}
+  .btn-outline{border-color:var(--line);color:var(--fg);}
+  .btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+
+  .social-row{display:flex;gap:12px;margin-top:32px;}
+  .social-row a{
+    width:38px;height:38px;border:1px solid var(--line);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;color:var(--muted);
+    transition:all .2s ease;
+  }
+  .social-row a:hover{border-color:var(--blue);color:var(--blue);}
+
+  .hero-frame{position:relative;max-width:340px;margin:0 auto;}
+  .hero-frame img{width:100%;display:block;border:1px solid var(--line);filter:grayscale(15%);}
+  .hero-frame .tick-label{
+    position:absolute;bottom:-14px;left:-1px;right:-1px;
+    display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;color:var(--muted);
+  }
+  .hero-frame .tick-label span:last-child{color:var(--blue);}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:48px;}
+  @media(min-width:900px){ .about-grid{grid-template-columns:0.7fr 1.3fr;} }
+  .about-photo{border:1px solid var(--line);}
+  .about-photo img{width:100%;display:block;}
+  .spec-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:.9rem;margin-top:28px;}
+  .spec-table tr{border-top:1px solid var(--line-soft);}
+  .spec-table tr:last-child{border-bottom:1px solid var(--line-soft);}
+  .spec-table td{padding:12px 4px;}
+  .spec-table td:first-child{color:var(--muted);width:38%;}
+
+  .cv-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+
+  /* ---------- timeline ---------- */
+  .timeline{margin-top:56px;position:relative;padding-left:32px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-num{
+    position:absolute;left:-32px;top:0;width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--blue);
+    background:var(--ink);border:1px solid var(--blue);border-radius:50%;
+  }
+  .t-item h4{font-size:1.15rem;margin-bottom:4px;}
+  .t-meta{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--amber);margin-bottom:10px;display:block;}
+  .t-item p{color:var(--muted);max-width:62ch;margin:0;}
+
+  /* ---------- skills / gauges ---------- */
+  .skills-grid{display:grid;grid-template-columns:1fr;gap:56px;}
+  @media(min-width:820px){ .skills-grid{grid-template-columns:1fr 1fr;} }
+  .gauge{margin-bottom:26px;}
+  .gauge-top{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:10px;}
+  .gauge-top .val{font-family:'IBM Plex Mono',monospace;color:var(--blue);}
+  .gauge-track{
+    position:relative;height:6px;background:var(--line-soft);
+    background-image:repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 10%);
+  }
+  .gauge-fill{position:absolute;top:0;left:0;height:100%;background:var(--blue);}
+
+  .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:64px;}
+  @media(min-width:640px){ .tools-grid{grid-template-columns:repeat(3,1fr);} }
+  @media(min-width:960px){ .tools-grid{grid-template-columns:repeat(6,1fr);} }
+  .tool-chip{
+    border:1px solid var(--line);padding:22px 12px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    transition:border-color .2s ease;
+  }
+  .tool-chip:hover{border-color:var(--blue);}
+  .tool-chip img{width:34px;height:34px;object-fit:contain;}
+  .tool-chip span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);}
+
+  /* ---------- projects ---------- */
+  .projects-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+  @media(min-width:720px){ .projects-grid{grid-template-columns:1fr 1fr;} }
+  @media(min-width:1080px){ .projects-grid{grid-template-columns:repeat(3,1fr);} }
+
+  .proj-card{overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s ease;}
+  .proj-card:hover{border-color:var(--blue);}
+  .proj-media{height:190px;overflow:hidden;border-bottom:1px solid var(--line);position:relative;}
+  .proj-media img{width:100%;height:100%;object-fit:cover;}
+  .proj-index{
+    position:absolute;top:10px;left:10px;background:rgba(10,30,51,.85);
+    border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+    padding:3px 8px;color:var(--amber);
+  }
+  .proj-body{padding:24px;flex:1;display:flex;flex-direction:column;}
+  .proj-body h3{font-size:1.2rem;margin-bottom:10px;}
+  .proj-body p{color:var(--muted);font-size:.95rem;flex:1;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;border:1px solid var(--line-soft);color:var(--muted);padding:4px 9px;}
+  .proj-links{display:flex;gap:18px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;}
+  .proj-links a{color:var(--blue);}
+  .proj-links a:hover{color:var(--amber);}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:56px;}
+  @media(min-width:900px){ .contact-grid{grid-template-columns:0.85fr 1.15fr;} }
+  .contact-item{display:flex;gap:16px;margin-bottom:26px;}
+  .contact-icon{
+    width:42px;height:42px;flex:none;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--blue);
+  }
+  .contact-item h4{font-size:.95rem;margin-bottom:4px;}
+  .contact-item p{color:var(--muted);margin:0;font-size:.92rem;}
+
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);margin-bottom:8px;}
+  .field input,.field textarea{
+    width:100%;padding:12px 14px;background:var(--panel-2);border:1px solid var(--line);
+    color:var(--fg);font-family:'IBM Plex Sans',sans-serif;font-size:.95rem;border-radius:2px;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);}
+  .field-row{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:600px){ .field-row{grid-template-columns:1fr 1fr;} }
+
+  footer{border-top:1px solid var(--line-soft);padding:36px 0;}
+  .footer-row{display:flex;flex-direction:column;gap:18px;align-items:flex-start;justify-content:space-between;}
+  @media(min-width:700px){ .footer-row{flex-direction:row;align-items:center;} }
+  .footer-row .muted{color:var(--muted);font-size:.85rem;margin-top:6px;}
+
+  #top-btn{
+    position:fixed;bottom:28px;right:28px;width:44px;height:44px;
+    background:var(--blue);color:#08202f;border:none;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;z-index:40;
+  }
+
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;animation:none !important;}
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero-anim{animation:rise .7s ease both;}
+  .hero-anim:nth-child(2){animation-delay:.08s;}
+</style>
 </head>
-<body class="bg-dark text-slate-200">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-darker/80 backdrop-blur-sm z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
-                <a href="#home" class="block py-2 nav-link active">Home</a>
-                <a href="#about" class="block py-2 nav-link">About</a>
-                <a href="#skills" class="block py-2 nav-link">Skills</a>
-                <a href="#projects" class="block py-2 nav-link">Projects</a>
-                <a href="#contact" class="block py-2 nav-link">Contact</a>
-            </div>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="#home" class="brand">Pratibha Saini<span class="dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+          <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+        </button>
+        <button id="menu-toggle" class="menu-btn" aria-label="Toggle menu" style="margin-left:16px;"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden wrap" style="padding-bottom:14px;">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-kicker hero-anim">Software developer · Ghaziabad, India</div>
+      <h1 class="hero-title hero-anim">Building interfaces that feel<span class="accent"> considered</span>, not just coded.</h1>
+      <p class="hero-sub hero-anim">I'm Pratibha — a full-stack developer working across React, Node.js and modern CSS. I care about the details most people scroll past: load times, spacing, and whether a form actually feels good to fill in.</p>
+      <div class="btn-row hero-anim">
+        <a href="#contact" class="btn btn-solid">Get in touch</a>
+        <a href="#projects" class="btn btn-outline">See the work</a>
+      </div>
+      <div class="social-row hero-anim">
+        <a href="https://github.com/pratibhasaini2005" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/pratibha-saini-520791359" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="hero-frame hero-anim">
+      <div class="corner">
+        <img src="logo1.png" alt="Portrait of Pratibha Saini">
+      </div>
+      <div class="tick-label">
+        <span>21.4636° N, 77.3° E — approx.</span>
+        <span>MCA · AKTU</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-tag">about<div class="rule"></div></div>
+    <div class="section-head"><h2>A bit about me</h2></div>
+
+    <div class="about-grid">
+      <div>
+        <p style="max-width:64ch;color:var(--muted);font-size:1.02rem;">
+          I'm a full-stack developer with hands-on experience building modern web applications, mostly across the JavaScript ecosystem — React on the front end, Node.js on the back, and Tailwind for everything in between. I like projects with a clear problem to solve, and I spend as much time on the small interactions as the big features.
+        </p>
+        <div class="cv-row">
+          <a href="Pratibha Resume.pdf" class="btn btn-solid">Download CV</a>
+          <a href="#contact" class="btn btn-outline">Contact me</a>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Pratibha Saini</span></h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-300">Software Developer</h2>
-                <p class="text-lg mb-8 text-slate-400 max-w-lg">
-                    I build exceptional digital experiences that are fast, accessible, and visually appealing. 
-                    Let's create something amazing together.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="px-6 py-3 rounded-full btn-primary font-medium">Hire Me</a>
-                    <a href="#projects" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">View Work</a>
-                </div>
-                <div class="flex mt-8 space-x-4">
-                    <a href="https://github.com/pratibhasaini2005" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/pratibha-saini-520791359" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
-                    <img src="logo1.png" 
-                         alt="Profile" 
-                         class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 floating">
-                </div>
-            </div>
+      </div>
+      <div class="panel" style="padding:32px;">
+        <h3 style="font-size:1rem;color:var(--muted);margin-bottom:6px;">Quick facts</h3>
+        <table class="spec-table">
+          <tr><td>Name</td><td>Pratibha Saini</td></tr>
+          <tr><td>Email</td><td>sainipratibha2005@gmail.com</td></tr>
+          <tr><td>Phone</td><td>+91 93546 34420</td></tr>
+          <tr><td>Location</td><td>Ghaziabad, India</td></tr>
+          <tr><td>Age</td><td>21</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Education timeline -->
+    <div class="section-tag" style="margin-top:88px;">education<div class="rule"></div></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-num">01</div>
+        <h4>Master of Computer Applications</h4>
+        <span class="t-meta">AKTU · 2025 — Present</span>
+        <p>Deepening my grounding in software architecture and applied computing, while continuing to build and ship personal projects alongside coursework.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-num">02</div>
+        <h4>Bachelor of Computer Applications</h4>
+        <span class="t-meta">CCSU · 2022 — 2025</span>
+        <p>Built a foundation in programming, data structures and web development, and took part in several coding competitions and team projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-tag">skills<div class="rule"></div></div>
+    <div class="section-head"><h2>What I work with</h2></div>
+
+    <div class="skills-grid">
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:28px;color:var(--muted);">Technical</h3>
+        <div class="gauge"><div class="gauge-top"><span>HTML / CSS</span><span class="val mono">95%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:95%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>JavaScript</span><span class="val mono">90%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:90%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>React</span><span class="val mono">85%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:85%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>Node.js</span><span class="val mono">80%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:80%"></div></div></div>
+      </div>
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:28px;color:var(--muted);">Working style</h3>
+        <div class="gauge"><div class="gauge-top"><span>Communication</span><span class="val mono">90%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:90%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>Teamwork</span><span class="val mono">85%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:85%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>Problem solving</span><span class="val mono">95%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:95%"></div></div></div>
+        <div class="gauge"><div class="gauge-top"><span>Creativity</span><span class="val mono">75%</span></div><div class="gauge-track"><div class="gauge-fill" style="width:75%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo"><span>HTML5</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 logo"><span>CSS3</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript logo"><span>JavaScript</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React logo"><span>React</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js logo"><span>Node.js</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB logo"><span>MongoDB</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git logo"><span>Git</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm logo"><span>npm</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="Sass logo"><span>Sass</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma logo"><span>Figma</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code logo"><span>VS Code</span></div>
+      <div class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux logo"><span>Linux</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-tag">projects<div class="rule"></div></div>
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <a href="#" class="btn btn-outline">View all projects</a>
+    </div>
+
+    <div class="projects-grid">
+      <div class="panel proj-card">
+        <div class="proj-media">
+          <span class="proj-index">01</span>
+          <img src="project 1.jpg" alt="Fake Email Detection System">
         </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-darker">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                    <div class="relative w-64 h-64">
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
-                        <img src="logo1.png" 
-                             alt="About" 
-                             class="relative w-full h-full object-cover rounded-2xl border-4 border-slate-800">
-                    </div>
-                </div>
-                
-                <div class="md:w-2/3 md:pl-12">
-                    <h3 class="text-2xl font-bold mb-6">Who am I?</h3>
-                    <p class="text-slate-400 mb-6">
-                        I'm a passionate Full Stack Developer with over 5 years of experience creating modern web applications. 
-                        I specialize in JavaScript ecosystems including React, Node.js, and modern CSS frameworks.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <h4 class="font-semibold mb-2">Name: <span class="text-slate-300">Pratibha Saini</span></h4>
-                            <h4 class="font-semibold mb-2">Email: <span class="text-slate-300">sainipratibha2005@gmail.com</span></h4>
-                            <h4 class="font-semibold mb-2">Phone: <span class="text-slate-300">9354634420</span></h4>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Age: <span class="text-slate-300">21</span></h4>
-                            <h4 class="font-semibold mb-2">Location: <span class="text-slate-300">Ghaziabad, India</span></h4>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-4">
-                        <a href="Pratibha Resume.pdf" class="px-6 py-3 rounded-full btn-primary font-medium">Download CV</a>
-                        <a href="#contact" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">Contact Me</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Experience Timeline -->
-            <div class="mt-20">
-                <h3 class="text-2xl font-bold mb-8 text-center">My <span class="gradient-text">Education</span></h3>
-                
-                <div class="relative max-w-3xl mx-auto">
-                    <div class="absolute left-1/2 h-full w-0.5 bg-slate-700 transform -translate-x-1/2"></div>
-                    
-                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
-                        <div class="order-1 w-5/12"></div>
-                        <div class="order-1 w-5/12 px-4 py-4 bg-slate-800 rounded-lg shadow-lg">
-                            <h4 class="text-lg font-bold mb-2">Master of Computer Applications</h4>
-                            <p class="text-sm text-slate-400 mb-2">AKTU • 2025 - Present</p>
-                            <p class="text-slate-300">
-                                Lead a team of developers to build responsive web applications using React and Next.js. 
-                                Improved performance by 40% through code optimization.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
-                        <div class="order-1 w-5/12 px-4 py-4 bg-slate-800 rounded-lg shadow-lg">
-                            <h4 class="text-lg font-bold mb-2">Bachelor of Computer Applications</h4>
-                            <p class="text-sm text-slate-400 mb-2">CCSU • 2022 - 2025</p>
-                            <p class="text-slate-300">
-                                Gained a strong foundation in computer science principles and programming languages. 
-                                Participated in various coding competitions and projects.
-                            </p>
-                        </div>
-                        <div class="order-1 w-5/12"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="proj-body">
+          <h3>Fake email detection system</h3>
+          <p>An AI-based system that analyzes email content and patterns to flag potentially fraudulent or phishing emails.</p>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+          </div>
+          <div class="proj-links">
+            <a href="#"><i class="fas fa-arrow-up-right-from-square"></i> Live demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-dark">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Technical Skills</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">HTML/CSS</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">JavaScript</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">React</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Node.js</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Professional Skills</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Communication</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Teamwork</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Problem Solving</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Creativity</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tools & Technologies -->
-            <div class="mt-16">
-                <h3 class="text-2xl font-bold mb-8 text-center">Tools & <span class="gradient-text">Technologies</span></h3>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
-                        <span>HTML5</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
-                        <span>CSS3</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
-                        <span>React</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
-                        <span>Node.js</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fas fa-database text-4xl text-blue-300 mb-2"></i>
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-git-alt text-4xl text-orange-600 mb-2"></i>
-                        <span>Git</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-npm text-4xl text-red-500 mb-2"></i>
-                        <span>npm</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-sass text-4xl text-pink-500 mb-2"></i>
-                        <span>Sass</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-figma text-4xl text-purple-500 mb-2"></i>
-                        <span>Figma</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fas fa-terminal text-4xl text-gray-300 mb-2"></i>
-                        <span>VS Code</span>
-                    </div>
-                    <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg card-hover">
-                        <i class="fab fa-linux text-4xl text-white mb-2"></i>
-                        <span>Linux</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+
+      <div class="panel proj-card">
+        <div class="proj-media">
+          <span class="proj-index">02</span>
+          <img src="project 2.png" alt="Expense Tracker">
         </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-darker">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card rounded-xl overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="project 1.jpg" 
-                             alt="Project 1" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Fake Email Detection System</h3>
-                        <p class="text-slate-400 mb-4">
-                            An AI-based system that analyzes email content and patterns to detect and classify potentially fraudulent or phishing emails.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Pandas</span>
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Numpy</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-primary hover:text-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="text-primary hover:text-secondary">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card rounded-xl overflow-hidden card-hover">
-                    <div class="h-48 overflow-hidden">
-                        <img src="project 2.png" 
-                             alt="Project 2" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Expense Tracker</h3>
-                        <p class="text-slate-400 mb-4">
-                            A React-based web application for tracking, managing, and categorizing daily expenses with a simple and user-friendly interface.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">TailwindCSS</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://expense-tracker-client-ljs9.onrender.com/" class="text-primary hover:text-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="text-primary hover:text-secondary">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="px-8 py-3 rounded-full btn-primary font-medium inline-flex items-center">
-                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
+        <div class="proj-body">
+          <h3>Expense tracker</h3>
+          <p>A React-based app for logging, categorizing and reviewing daily expenses, with a clean and simple interface.</p>
+          <div class="tag-row">
+            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Tailwind CSS</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://expense-tracker-client-ljs9.onrender.com/"><i class="fas fa-arrow-up-right-from-square"></i> Live demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
         </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-dark">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                    <p class="text-slate-400 mb-8">
-                        Feel free to reach out to me for any questions or opportunities. 
-                        I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">Location</h4>
-                                <p class="text-slate-400">Ghaziabad, India</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">Email</h4>
-                                <p class="text-slate-400">sainipratibha2005@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-slate-800 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">Phone</h4>
-                                <p class="text-slate-400">9354634420</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="font-bold mb-4">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
-                                <i class="fab fa-linkedin-in text-xl"></i>
-                            </a>
-                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-400">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-pink-600">
-                                <i class="fab fa-dribbble text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block mb-2 font-medium">Your Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block mb-2 font-medium">Your Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="subject" class="block mb-2 font-medium">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
-                        </div>
-                        <div>
-                            <label for="message" class="block mb-2 font-medium">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required></textarea>
-                        </div>
-                        <button type="submit" class="px-8 py-3 rounded-full btn-primary font-medium w-full">
-                            Send Message <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-tag">contact<div class="rule"></div></div>
+    <div class="section-head"><h2>Let's talk</h2></div>
+
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);max-width:48ch;margin-bottom:36px;">Open to new projects, freelance work, or just a conversation about something you're building. The fastest way to reach me is email.</p>
+
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><h4>Location</h4><p>Ghaziabad, India</p></div>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="bg-darker py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
-                    <p class="text-slate-400 mt-2">© 2026 Pratibha Saini. All rights reserved.</p>
-                </div>
-                
-                <div class="flex space-x-6">
-                    <a href="https://github.com/pratibhasaini2005" class="text-slate-400 hover:text-primary transition">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/pratibha-saini-520791359" class="text-slate-400 hover:text-blue-600 transition">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="#" class="text-slate-400 hover:text-blue-400 transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div><h4>Email</h4><p>sainipratibha2005@gmail.com</p></div>
         </div>
-    </footer>
-    
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg hidden">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                    
-                    // Update active link
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-        
-        // Update active link on scroll
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            
-            document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-            
-            // Show/hide back to top button
-            const backToTopButton = document.getElementById('back-to-top');
-            if (scrollPosition > 300) {
-                backToTopButton.classList.remove('hidden');
-            } else {
-                backToTopButton.classList.add('hidden');
-            }
-        });
-        
-        // Back to top button
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Animate skill bars on scroll
-        const animateSkillBars = () => {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            const skillsSection = document.getElementById('skills');
-            const skillsSectionTop = skillsSection.offsetTop;
-            const windowHeight = window.innerHeight;
-            
-            if (window.scrollY > skillsSectionTop - windowHeight + 200) {
-                skillBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
-                
-                // Remove event listener after animation
-                window.removeEventListener('scroll', animateSkillBars);
-            }
-        };
-        
-        window.addEventListener('scroll', animateSkillBars);
-    </script>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div><h4>Phone</h4><p>+91 93546 34420</p></div>
+        </div>
+
+        <div class="social-row" style="margin-top:8px;">
+          <a href="https://github.com/pratibhasaini2005" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/pratibha-saini-520791359" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:32px;">
+        <form>
+          <div class="field-row">
+            <div class="field"><label for="name">Your name</label><input type="text" id="name" required></div>
+            <div class="field"><label for="email">Your email</label><input type="email" id="email" required></div>
+          </div>
+          <div class="field"><label for="subject">Subject</label><input type="text" id="subject" required></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" rows="5" required></textarea></div>
+          <button type="submit" class="btn btn-solid" style="width:100%;justify-content:center;">Send message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>
+      <a href="#home" class="brand">Pratibha Saini<span class="dot">.</span></a>
+      <p class="muted">© 2026 Pratibha Saini. All rights reserved.</p>
+    </div>
+    <div class="social-row">
+      <a href="https://github.com/pratibhasaini2005" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/pratibha-saini-520791359" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+<button id="top-btn" class="hidden" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+  (function initTheme(){
+    const root = document.documentElement;
+    let saved = null;
+    try{ saved = localStorage.getItem('theme'); }catch(e){}
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const theme = saved || (prefersLight ? 'light' : 'dark');
+    if(theme === 'light') root.setAttribute('data-theme','light');
+  })();
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const root = document.documentElement;
+    const isLight = root.getAttribute('data-theme') === 'light';
+    if(isLight){
+      root.removeAttribute('data-theme');
+      try{ localStorage.setItem('theme','dark'); }catch(e){}
+    } else {
+      root.setAttribute('data-theme','light');
+      try{ localStorage.setItem('theme','light'); }catch(e){}
+    }
+  });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){
+        window.scrollTo({top: target.offsetTop - 90, behavior:'smooth'});
+        mobileMenu.classList.add('hidden');
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+        document.querySelectorAll(`.nav-links a[href="${a.getAttribute('href')}"]`).forEach(l => l.classList.add('active'));
+      }
+    });
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const topBtn = document.getElementById('top-btn');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 110;
+      if(y >= top && y < top + sec.offsetHeight){
+        navLinks.forEach(l => l.classList.remove('active'));
+        document.querySelectorAll(`.nav-links a[href="#${sec.id}"]`).forEach(l => l.classList.add('active'));
+      }
+    });
+    topBtn.classList.toggle('hidden', y < 400);
+  });
+
+  topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
 </body>
 </html>
