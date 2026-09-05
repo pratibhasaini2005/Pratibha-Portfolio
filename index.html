@@ -274,6 +274,40 @@
     transition:background-color .25s ease;
   }
 
+  /* ---------- CV viewer modal ---------- */
+  .cv-modal{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .cv-modal.hidden{display:none;}
+  .cv-modal-overlay{position:absolute;inset:0;background:rgba(2,6,12,0.72);}
+  [data-theme="light"] .cv-modal-overlay{background:rgba(20,26,34,0.55);}
+  .cv-modal-panel{
+    position:relative;z-index:1;width:100%;max-width:860px;height:88vh;
+    background:var(--panel);border:1px solid var(--line);border-radius:3px;
+    display:flex;flex-direction:column;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  }
+  .cv-modal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;border-bottom:1px solid var(--line-soft);flex:none;
+  }
+  .cv-modal-head h3{font-size:1rem;color:var(--fg);}
+  .cv-modal-head span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);display:block;margin-top:2px;}
+  .cv-modal-actions{display:flex;align-items:center;gap:10px;}
+  .cv-modal-actions a{
+    font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--blue);
+    border:1px solid var(--line);padding:8px 14px;border-radius:2px;transition:border-color .2s ease;
+  }
+  .cv-modal-actions a:hover{border-color:var(--blue);}
+  .cv-modal-close{
+    width:36px;height:36px;border:1px solid var(--line);background:none;color:var(--fg);
+    border-radius:2px;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease,color .2s ease;
+  }
+  .cv-modal-close:hover{border-color:var(--blue);color:var(--blue);}
+  .cv-modal-body{flex:1;background:#e9edf1;}
+  .cv-modal-body iframe{width:100%;height:100%;border:none;display:block;}
+
   :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
   @media (prefers-reduced-motion: reduce){
@@ -286,6 +320,27 @@
   }
   .hero-anim{animation:rise .7s ease both;}
   .hero-anim:nth-child(2){animation-delay:.08s;}
+
+  /* ---------- phone view ---------- */
+  @media(max-width:640px){
+    .wrap{padding:0 18px;}
+    section{padding:64px 0;}
+    #home{padding-top:120px;padding-bottom:72px;}
+    .nav-row{height:64px;}
+    .brand{font-size:1rem;}
+    .hero-frame{max-width:220px;}
+    .btn-row,.cv-row{flex-direction:column;align-items:stretch;}
+    .btn-row .btn,.cv-row .btn{width:100%;justify-content:center;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+    .section-head .btn{width:100%;justify-content:center;}
+    .spec-table{font-size:.82rem;}
+    .proj-media{height:160px;}
+    .cv-modal{padding:0;}
+    .cv-modal-panel{max-width:100%;height:100%;border-radius:0;}
+    .cv-modal-head{flex-direction:column;align-items:flex-start;gap:12px;}
+    .cv-modal-actions{width:100%;justify-content:space-between;}
+    #top-btn{bottom:18px;right:18px;width:40px;height:40px;}
+  }
 </style>
 </head>
 <body>
@@ -358,9 +413,8 @@
           I'm a full-stack developer with hands-on experience building modern web applications, mostly across the JavaScript ecosystem — React on the front end, Node.js on the back, and Tailwind for everything in between. I like projects with a clear problem to solve, and I spend as much time on the small interactions as the big features.
         </p>
         <div class="cv-row">
-          <a href="Pratibha Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">View CV <i class="fas fa-arrow-up-right-from-square"></i></a>
+          <button type="button" id="view-cv-btn" class="btn btn-outline">View CV <i class="fas fa-arrow-up-right-from-square"></i></button>
           <a href="Pratibha Resume.pdf" download class="btn btn-solid">Download CV <i class="fas fa-download"></i></a>
-          <a href="#contact" class="btn btn-outline">Contact me</a>
         </div>
       </div>
       <div class="panel" style="padding:32px;">
@@ -540,6 +594,25 @@
   </div>
 </footer>
 
+<div id="cv-modal" class="cv-modal hidden" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+  <div class="cv-modal-overlay" id="cv-modal-overlay"></div>
+  <div class="cv-modal-panel">
+    <div class="cv-modal-head">
+      <div>
+        <h3 id="cv-modal-title">Pratibha Saini — Resume</h3>
+        <span>Pratibha Resume.pdf</span>
+      </div>
+      <div class="cv-modal-actions">
+        <a href="Pratibha Resume.pdf" download>Download</a>
+        <button type="button" class="cv-modal-close" id="cv-modal-close" aria-label="Close CV viewer"><i class="fas fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="cv-modal-body">
+      <iframe id="cv-modal-frame" src="" title="Pratibha Saini resume PDF"></iframe>
+    </div>
+  </div>
+</div>
+
 <button id="top-btn" class="hidden" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
@@ -600,6 +673,33 @@
   });
 
   topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // CV viewer modal
+  const cvModal = document.getElementById('cv-modal');
+  const cvFrame = document.getElementById('cv-modal-frame');
+  const cvOpenBtn = document.getElementById('view-cv-btn');
+  const cvCloseBtn = document.getElementById('cv-modal-close');
+  const cvOverlay = document.getElementById('cv-modal-overlay');
+  const CV_PATH = 'Pratibha Resume.pdf';
+
+  function openCvModal(){
+    cvFrame.src = CV_PATH;
+    cvModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    cvCloseBtn.focus();
+  }
+  function closeCvModal(){
+    cvModal.classList.add('hidden');
+    cvFrame.src = '';
+    document.body.style.overflow = '';
+    cvOpenBtn.focus();
+  }
+  cvOpenBtn.addEventListener('click', openCvModal);
+  cvCloseBtn.addEventListener('click', closeCvModal);
+  cvOverlay.addEventListener('click', closeCvModal);
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && !cvModal.classList.contains('hidden')) closeCvModal();
+  });
 </script>
 </body>
 </html>
