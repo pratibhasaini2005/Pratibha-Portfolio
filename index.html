@@ -41,13 +41,15 @@
 
   *{box-sizing:border-box;}
 
+  html{font-size:18px;}
   html,body{margin:0;padding:0;}
 
   body{
     background-color:var(--ink);
     color:var(--fg);
     font-family:'IBM Plex Sans',sans-serif;
-    line-height:1.6;
+    font-size:18px;
+    line-height:1.65;
     transition:background-color .25s ease, color .25s ease;
   }
 
@@ -72,19 +74,19 @@
     transition:background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
   header.scrolled{box-shadow:0 8px 24px rgba(0,0,0,0.18);}
-  .nav-row{display:flex;align-items:center;justify-content:space-between;height:76px;}
-  .brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;height:92px;}
+  .brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.4rem;}
   .brand .bracket{color:var(--blue);font-family:'IBM Plex Mono',monospace;font-weight:400;}
-  .nav-links{display:none;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;}
+  .nav-links{display:none;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:0.95rem;}
   .nav-links a{
-    position:relative;color:var(--muted);padding:8px 16px;border-radius:20px;
+    position:relative;color:var(--muted);padding:10px 18px;border-radius:20px;
     transition:color .2s ease, background-color .2s ease;
   }
   .nav-links a:hover{color:var(--fg);background:var(--panel-2);}
   .nav-links a.active{color:var(--blue);background:var(--panel-2);}
   @media(min-width:840px){ .nav-links{display:flex;} .menu-btn{display:none;} }
 
-  .menu-btn{background:none;border:1px solid var(--line);color:var(--fg);width:40px;height:40px;border-radius:4px;font-size:1rem;}
+  .menu-btn{background:none;border:1px solid var(--line);color:var(--fg);width:46px;height:46px;border-radius:4px;font-size:1.15rem;}
   .mobile-menu{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line-soft);}
   .mobile-menu a{padding:14px 4px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--muted);border-bottom:1px solid var(--line-soft);transition:color .2s ease;}
   .mobile-menu a:last-child{border-bottom:none;}
@@ -94,12 +96,12 @@
   /* ---------- generic section chrome ---------- */
   section{padding:96px 0;position:relative;}
   .section-tag{
-    font-family:'IBM Plex Mono',monospace;color:var(--blue);font-size:0.8rem;
+    font-family:'IBM Plex Mono',monospace;color:var(--blue);font-size:0.92rem;
     display:flex;align-items:center;gap:10px;margin-bottom:18px;
   }
   .section-tag .rule{flex:1;height:1px;background:var(--line);}
   .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
-  .section-head h2{font-size:clamp(1.9rem,3.2vw,2.6rem);}
+  .section-head h2{font-size:clamp(2.2rem,3.6vw,3rem);}
 
   .corner{position:relative;}
   .corner::before,.corner::after{
@@ -116,9 +118,9 @@
   }
 
   .theme-toggle{
-    width:40px;height:40px;border:1px solid var(--line);border-radius:4px;
+    width:46px;height:46px;border:1px solid var(--line);border-radius:4px;
     background:none;color:var(--fg);display:flex;align-items:center;justify-content:center;
-    margin-left:16px;transition:border-color .2s ease,color .2s ease;
+    margin-left:16px;font-size:1.05rem;transition:border-color .2s ease,color .2s ease;
   }
   .theme-toggle:hover{border-color:var(--blue);color:var(--blue);}
   .theme-toggle .fa-sun{display:none;}
@@ -132,22 +134,24 @@
 
   .hero-kicker{
     display:inline-flex;align-items:center;gap:10px;
-    font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.82rem;margin-bottom:22px;
+    font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.95rem;margin-bottom:22px;
   }
   .hero-kicker::before{content:'';width:22px;height:1px;background:var(--amber);}
-  .hero-title{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.05;font-weight:700;letter-spacing:-0.02em;}
+  .hero-title{font-size:clamp(2.9rem,6.6vw,4.7rem);line-height:1.05;font-weight:700;letter-spacing:-0.02em;}
   .hero-title .accent{color:var(--blue);}
-  .hero-sub{margin-top:22px;color:var(--muted);max-width:46ch;font-size:1.08rem;}
+  .hero-sub{margin-top:22px;color:var(--muted);max-width:48ch;font-size:1.2rem;}
 
   .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
   .btn{
-    padding:13px 26px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.9rem;
+    padding:15px 28px;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:1rem;
     display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;border:1px solid transparent;
   }
   .btn-solid{background:var(--blue);color:var(--btn-fg);font-weight:500;}
   .btn-solid:hover{filter:brightness(1.1);}
   .btn-outline{border-color:var(--line);color:var(--fg);}
   .btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+  .btn-amber{border-color:var(--amber);color:var(--amber);}
+  .btn-amber:hover{background:var(--amber);color:var(--btn-fg);}
 
   .social-row{display:flex;gap:12px;margin-top:32px;}
   .social-row a{
@@ -162,7 +166,7 @@
   .hero-frame .tick-label{
     position:absolute;bottom:-14px;left:-1px;right:-1px;
     display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
-    font-size:.72rem;color:var(--muted);
+    font-size:.82rem;color:var(--muted);
   }
   .hero-frame .tick-label span:last-child{color:var(--blue);}
 
@@ -171,7 +175,7 @@
   @media(min-width:900px){ .about-grid{grid-template-columns:0.7fr 1.3fr;} }
   .about-photo{border:1px solid var(--line);}
   .about-photo img{width:100%;display:block;}
-  .spec-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:.9rem;margin-top:28px;}
+  .spec-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:1.02rem;margin-top:28px;}
   .spec-table tr{border-top:1px solid var(--line-soft);}
   .spec-table tr:last-child{border-bottom:1px solid var(--line-soft);}
   .spec-table td{padding:12px 4px;}
@@ -191,14 +195,14 @@
     background:var(--ink);border:1px solid var(--blue);border-radius:50%;
   }
   .t-item h4{font-size:1.15rem;margin-bottom:4px;}
-  .t-meta{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--amber);margin-bottom:10px;display:block;}
+  .t-meta{font-family:'IBM Plex Mono',monospace;font-size:.92rem;color:var(--amber);margin-bottom:10px;display:block;}
   .t-item p{color:var(--muted);max-width:62ch;margin:0;}
 
   /* ---------- skills / gauges ---------- */
   .skills-grid{display:grid;grid-template-columns:1fr;gap:56px;}
   @media(min-width:820px){ .skills-grid{grid-template-columns:1fr 1fr;} }
   .gauge{margin-bottom:26px;}
-  .gauge-top{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:10px;}
+  .gauge-top{display:flex;justify-content:space-between;font-size:1.05rem;margin-bottom:10px;}
   .gauge-top .val{font-family:'IBM Plex Mono',monospace;color:var(--blue);}
   .gauge-track{
     position:relative;height:6px;background:var(--line-soft);
@@ -216,7 +220,7 @@
   }
   .tool-chip:hover{border-color:var(--blue);}
   .tool-chip img{width:34px;height:34px;object-fit:contain;}
-  .tool-chip span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);}
+  .tool-chip span{font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:var(--muted);}
 
   /* ---------- projects ---------- */
   .projects-grid{display:grid;grid-template-columns:1fr;gap:28px;}
@@ -229,15 +233,15 @@
   .proj-media img{width:100%;height:100%;object-fit:cover;}
   .proj-index{
     position:absolute;top:10px;left:10px;background:var(--chip-bg);
-    border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+    border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.8rem;
     padding:3px 8px;color:var(--amber);
   }
   .proj-body{padding:24px;flex:1;display:flex;flex-direction:column;}
   .proj-body h3{font-size:1.2rem;margin-bottom:10px;}
-  .proj-body p{color:var(--muted);font-size:.95rem;flex:1;}
+  .proj-body p{color:var(--muted);font-size:1.05rem;flex:1;}
   .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
-  .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;border:1px solid var(--line-soft);color:var(--muted);padding:4px 9px;}
-  .proj-links{display:flex;gap:18px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:.8rem;border:1px solid var(--line-soft);color:var(--muted);padding:5px 10px;}
+  .proj-links{display:flex;gap:18px;font-family:'IBM Plex Mono',monospace;font-size:.92rem;}
   .proj-links a{color:var(--blue);}
   .proj-links a:hover{color:var(--amber);}
 
@@ -249,14 +253,14 @@
     width:42px;height:42px;flex:none;border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;color:var(--blue);
   }
-  .contact-item h4{font-size:.95rem;margin-bottom:4px;}
-  .contact-item p{color:var(--muted);margin:0;font-size:.92rem;}
+  .contact-item h4{font-size:1.08rem;margin-bottom:4px;}
+  .contact-item p{color:var(--muted);margin:0;font-size:1.02rem;}
 
   .field{margin-bottom:20px;}
-  .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);margin-bottom:8px;}
+  .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:var(--muted);margin-bottom:8px;}
   .field input,.field textarea{
     width:100%;padding:12px 14px;background:var(--panel-2);border:1px solid var(--line);
-    color:var(--fg);font-family:'IBM Plex Sans',sans-serif;font-size:.95rem;border-radius:2px;
+    color:var(--fg);font-family:'IBM Plex Sans',sans-serif;font-size:1.05rem;border-radius:2px;
   }
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);}
   .field-row{display:grid;grid-template-columns:1fr;gap:20px;}
@@ -265,7 +269,7 @@
   footer{border-top:1px solid var(--line-soft);padding:36px 0;}
   .footer-row{display:flex;flex-direction:column;gap:18px;align-items:flex-start;justify-content:space-between;}
   @media(min-width:700px){ .footer-row{flex-direction:row;align-items:center;} }
-  .footer-row .muted{color:var(--muted);font-size:.85rem;margin-top:6px;}
+  .footer-row .muted{color:var(--muted);font-size:.95rem;margin-top:6px;}
 
   #top-btn{
     position:fixed;bottom:28px;right:28px;width:44px;height:44px;
@@ -274,39 +278,24 @@
     transition:background-color .25s ease;
   }
 
-  /* ---------- CV viewer modal ---------- */
+  /* ---------- CV viewer ---------- */
   .cv-modal{
-    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
-    padding:24px;
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;
   }
   .cv-modal.hidden{display:none;}
-  .cv-modal-overlay{position:absolute;inset:0;background:rgba(2,6,12,0.72);}
-  [data-theme="light"] .cv-modal-overlay{background:rgba(20,26,34,0.55);}
-  .cv-modal-panel{
-    position:relative;z-index:1;width:100%;max-width:860px;height:88vh;
-    background:var(--panel);border:1px solid var(--line);border-radius:3px;
-    display:flex;flex-direction:column;overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  .cv-modal-overlay{position:absolute;inset:0;background:rgba(2,6,12,0.78);}
+  [data-theme="light"] .cv-modal-overlay{background:rgba(20,26,34,0.6);}
+  .cv-modal-inner{position:relative;z-index:1;max-width:min(720px,92vw);max-height:90vh;}
+  .cv-modal-inner img{
+    display:block;max-width:100%;max-height:90vh;width:auto;height:auto;
+    border:1px solid var(--line);background:#fff;box-shadow:0 24px 60px rgba(0,0,0,0.4);
   }
-  .cv-modal-head{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 20px;border-bottom:1px solid var(--line-soft);flex:none;
-  }
-  .cv-modal-head h3{font-size:1rem;color:var(--fg);}
-  .cv-modal-head span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);display:block;margin-top:2px;}
-  .cv-modal-actions{display:flex;align-items:center;gap:10px;}
-  .cv-modal-actions a{
-    font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--blue);
-    border:1px solid var(--line);padding:8px 14px;border-radius:2px;transition:border-color .2s ease;
-  }
-  .cv-modal-actions a:hover{border-color:var(--blue);}
   .cv-modal-close{
-    width:36px;height:36px;border:1px solid var(--line);background:none;color:var(--fg);
-    border-radius:2px;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease,color .2s ease;
+    position:absolute;top:-18px;right:-18px;width:38px;height:38px;
+    border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;transition:border-color .2s ease,color .2s ease;
   }
   .cv-modal-close:hover{border-color:var(--blue);color:var(--blue);}
-  .cv-modal-body{flex:1;background:#e9edf1;}
-  .cv-modal-body iframe{width:100%;height:100%;border:none;display:block;}
 
   :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
@@ -335,10 +324,7 @@
     .section-head .btn{width:100%;justify-content:center;}
     .spec-table{font-size:.82rem;}
     .proj-media{height:160px;}
-    .cv-modal{padding:0;}
-    .cv-modal-panel{max-width:100%;height:100%;border-radius:0;}
-    .cv-modal-head{flex-direction:column;align-items:flex-start;gap:12px;}
-    .cv-modal-actions{width:100%;justify-content:space-between;}
+    .cv-modal-close{top:-14px;right:0;}
     #top-btn{bottom:18px;right:18px;width:40px;height:40px;}
   }
 </style>
@@ -409,16 +395,16 @@
 
     <div class="about-grid">
       <div>
-        <p style="max-width:64ch;color:var(--muted);font-size:1.02rem;">
+        <p style="max-width:64ch;color:var(--muted);font-size:1.15rem;">
           I'm a full-stack developer with hands-on experience building modern web applications, mostly across the JavaScript ecosystem — React on the front end, Node.js on the back, and Tailwind for everything in between. I like projects with a clear problem to solve, and I spend as much time on the small interactions as the big features.
         </p>
         <div class="cv-row">
-          <button type="button" id="view-cv-btn" class="btn btn-outline">View CV <i class="fas fa-arrow-up-right-from-square"></i></button>
-          <a href="Pratibha Resume.pdf" download class="btn btn-solid">Download CV <i class="fas fa-download"></i></a>
+          <button type="button" id="view-cv-btn" class="btn btn-amber">View CV <i class="fas fa-arrow-up-right-from-square"></i></button>
+          <a href="Pratibha Resume.jpg" download class="btn btn-solid">Download CV <i class="fas fa-download"></i></a>
         </div>
       </div>
       <div class="panel" style="padding:32px;">
-        <h3 style="font-size:1rem;color:var(--muted);margin-bottom:6px;">Quick facts</h3>
+        <h3 style="font-size:1.12rem;color:var(--muted);margin-bottom:6px;">Quick facts</h3>
         <table class="spec-table">
           <tr><td>Name</td><td>Pratibha Saini</td></tr>
           <tr><td>Email</td><td>sainipratibha2005@gmail.com</td></tr>
@@ -594,22 +580,12 @@
   </div>
 </footer>
 
-<div id="cv-modal" class="cv-modal hidden" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+
+<div id="cv-modal" class="cv-modal hidden" role="dialog" aria-modal="true" aria-label="Resume viewer">
   <div class="cv-modal-overlay" id="cv-modal-overlay"></div>
-  <div class="cv-modal-panel">
-    <div class="cv-modal-head">
-      <div>
-        <h3 id="cv-modal-title">Pratibha Saini — Resume</h3>
-        <span>Pratibha Resume.pdf</span>
-      </div>
-      <div class="cv-modal-actions">
-        <a href="Pratibha Resume.pdf" download>Download</a>
-        <button type="button" class="cv-modal-close" id="cv-modal-close" aria-label="Close CV viewer"><i class="fas fa-xmark"></i></button>
-      </div>
-    </div>
-    <div class="cv-modal-body">
-      <iframe id="cv-modal-frame" src="" title="Pratibha Saini resume PDF"></iframe>
-    </div>
+  <div class="cv-modal-inner">
+    <button type="button" class="cv-modal-close" id="cv-modal-close" aria-label="Close resume viewer"><i class="fas fa-xmark"></i></button>
+    <img id="cv-modal-img" src="" alt="Pratibha Saini resume">
   </div>
 </div>
 
@@ -674,23 +650,22 @@
 
   topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-  // CV viewer modal
+  // CV viewer
   const cvModal = document.getElementById('cv-modal');
-  const cvFrame = document.getElementById('cv-modal-frame');
+  const cvImg = document.getElementById('cv-modal-img');
   const cvOpenBtn = document.getElementById('view-cv-btn');
   const cvCloseBtn = document.getElementById('cv-modal-close');
   const cvOverlay = document.getElementById('cv-modal-overlay');
-  const CV_PATH = 'Pratibha Resume.pdf';
+  const CV_PATH = 'Pratibha Resume.jpg';
 
   function openCvModal(){
-    cvFrame.src = CV_PATH;
+    cvImg.src = CV_PATH;
     cvModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     cvCloseBtn.focus();
   }
   function closeCvModal(){
     cvModal.classList.add('hidden');
-    cvFrame.src = '';
     document.body.style.overflow = '';
     cvOpenBtn.focus();
   }
