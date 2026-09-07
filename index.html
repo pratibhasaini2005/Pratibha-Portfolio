@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pratibha Saini — Software Developer</title>
-<!-- Favicon -->
-    <link
-        rel="icon"
-        type="image/x-icon"
-        href="logo1.ico"
-    >
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -228,6 +222,37 @@
   .tool-chip img{width:34px;height:34px;object-fit:contain;}
   .tool-chip span{font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:var(--muted);}
 
+  /* ---------- certificates ---------- */
+  .certs-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+  @media(min-width:720px){ .certs-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(min-width:980px){ .certs-grid{grid-template-columns:repeat(3,1fr);} }
+
+  .cert-card{overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s ease;}
+  .cert-card:hover{border-color:var(--blue);}
+  .cert-media{position:relative;height:220px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line);}
+  .cert-media img{width:100%;height:100%;object-fit:contain;padding:16px;}
+  .cert-overlay{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(2,6,12,0);opacity:0;transition:opacity .25s ease,background-color .25s ease;
+  }
+  .cert-card:hover .cert-overlay,.cert-media:focus-within .cert-overlay{
+    opacity:1;background:rgba(2,6,12,0.6);
+  }
+  .cert-overlay button{
+    font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:#fff;
+    border:1px solid rgba(255,255,255,0.7);background:rgba(255,255,255,0.06);
+    padding:11px 20px;border-radius:2px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;
+  }
+  .cert-overlay button:hover{background:var(--amber);border-color:var(--amber);color:var(--btn-fg);}
+  @media(hover:none){
+    .cert-overlay{opacity:1;background:rgba(2,6,12,0.35);}
+  }
+  .cert-body{padding:22px;flex:1;display:flex;flex-direction:column;}
+  .cert-body h3{font-size:1.08rem;margin-bottom:6px;}
+  .cert-issuer{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--amber);margin-bottom:4px;display:block;}
+  .cert-date{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--muted);display:block;}
+
   /* ---------- projects ---------- */
   .projects-grid{display:grid;grid-template-columns:1fr;gap:28px;}
   @media(min-width:720px){ .projects-grid{grid-template-columns:1fr 1fr;} }
@@ -345,6 +370,7 @@
         <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -359,6 +385,7 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
@@ -480,6 +507,31 @@
   </div>
 </section>
 
+<!-- Certificates -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-tag">certificates<div class="rule"></div></div>
+    <div class="section-head"><h2>Certifications</h2></div>
+
+    <div class="certs-grid">
+      <div class="panel cert-card">
+        <div class="cert-media">
+          <img src="Pratibha Oracle.jpg" alt="Agentic AI Certified Foundations Associate">
+          <div class="cert-overlay">
+            <button type="button" class="view-cert-btn" data-cert="Pratibha Oracle.jpg" data-title="Agentic AI Certified Foundations Associate">View certificate <i class="fas fa-arrow-up-right-from-square"></i></button>
+          </div>
+        </div>
+        <div class="cert-body">
+          <h3>Agentic AI Certified Foundations Associate</h3>
+          <span class="cert-issuer">Oracle</span>
+          <span class="cert-date">2026</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Projects -->
 <section id="projects">
   <div class="wrap">
@@ -587,11 +639,11 @@
 </footer>
 
 
-<div id="cv-modal" class="cv-modal hidden" role="dialog" aria-modal="true" aria-label="Resume viewer">
+<div id="cv-modal" class="cv-modal hidden" role="dialog" aria-modal="true" aria-label="Document viewer">
   <div class="cv-modal-overlay" id="cv-modal-overlay"></div>
   <div class="cv-modal-inner">
-    <button type="button" class="cv-modal-close" id="cv-modal-close" aria-label="Close resume viewer"><i class="fas fa-xmark"></i></button>
-    <img id="cv-modal-img" src="" alt="Pratibha Saini resume">
+    <button type="button" class="cv-modal-close" id="cv-modal-close" aria-label="Close viewer"><i class="fas fa-xmark"></i></button>
+    <img id="cv-modal-img" src="" alt="">
   </div>
 </div>
 
@@ -656,30 +708,41 @@
 
   topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-  // CV viewer
+  // Image viewer (resume + certificates)
   const cvModal = document.getElementById('cv-modal');
   const cvImg = document.getElementById('cv-modal-img');
-  const cvOpenBtn = document.getElementById('view-cv-btn');
   const cvCloseBtn = document.getElementById('cv-modal-close');
   const cvOverlay = document.getElementById('cv-modal-overlay');
-  const CV_PATH = 'Pratibha Resume.jpg';
+  let lastFocused = null;
 
-  function openCvModal(){
-    cvImg.src = CV_PATH;
+  function openImageModal(src, alt){
+    cvImg.src = src;
+    cvImg.alt = alt || 'Document preview';
     cvModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     cvCloseBtn.focus();
   }
-  function closeCvModal(){
+  function closeImageModal(){
     cvModal.classList.add('hidden');
     document.body.style.overflow = '';
-    cvOpenBtn.focus();
+    if(lastFocused) lastFocused.focus();
   }
-  cvOpenBtn.addEventListener('click', openCvModal);
-  cvCloseBtn.addEventListener('click', closeCvModal);
-  cvOverlay.addEventListener('click', closeCvModal);
+  cvCloseBtn.addEventListener('click', closeImageModal);
+  cvOverlay.addEventListener('click', closeImageModal);
   document.addEventListener('keydown', e => {
-    if(e.key === 'Escape' && !cvModal.classList.contains('hidden')) closeCvModal();
+    if(e.key === 'Escape' && !cvModal.classList.contains('hidden')) closeImageModal();
+  });
+
+  document.getElementById('view-cv-btn').addEventListener('click', e => {
+    lastFocused = e.currentTarget;
+    openImageModal('Pratibha Resume.jpg', 'Pratibha Saini resume');
+  });
+
+  document.querySelectorAll('.view-cert-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      lastFocused = e.currentTarget;
+      openImageModal(btn.getAttribute('data-cert'), btn.getAttribute('data-title'));
+    });
   });
 </script>
 </body>
